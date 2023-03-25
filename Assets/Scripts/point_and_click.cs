@@ -12,7 +12,7 @@ public class point_and_click : MonoBehaviour
     void Start()
     {
         navA = GetComponent<NavMeshAgent>();
-        anim = GetComponentInChildren<Animator>();
+        anim = this.GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -28,8 +28,8 @@ public class point_and_click : MonoBehaviour
                 anim.SetBool("isRunning", true);
                 targetPos = hitInfo.point;
             }
-            float Distance = Vector3.Distance(transform.position, targetPos);
-            if (Distance <= 1.5)
+            float Distance = Vector3.Distance(targetPos, transform.position);
+            if (Distance < 2f)
             {
                 anim.SetBool("isRunning", false);
             }
